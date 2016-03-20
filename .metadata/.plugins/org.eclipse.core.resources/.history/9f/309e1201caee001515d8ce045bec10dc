@@ -1,0 +1,13 @@
+package tollbooth;
+
+import java.util.logging.Logger;
+
+public class TollgateLogger extends Logger {
+
+	
+	
+	public TollgateLogger (String name){
+		super(name, null);
+	}
+	
+}

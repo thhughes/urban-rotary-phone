@@ -1,0 +1,24 @@
+package tollbooth;
+
+import static org.junit.Assert.assertNotNull;
+import org.junit.Test;
+import tollbooth.gatecontroller.TestGateController;
+
+public class TollgateLoggerTest {
+
+	
+	
+	
+	@Test
+	public void createNewTollGateLogger()
+	{
+		assertNotNull(new TollgateLogger(null, null));
+	}
+	
+	@Test
+	public void createNewTollGateLoggerWithName()
+	{
+		assertNotNull(new TollgateLogger("TestLogger"));
+	}
+	
+}

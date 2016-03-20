@@ -1,0 +1,7 @@
+package tollbooth;
+
+import java.util.logging.Logger;
+
+public class ToolboothLogger extends Logger {
+
+}

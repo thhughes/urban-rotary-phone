@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2016-03-20T22:13:14</date>
+  <millis>1458526394198</millis>
+  <sequence>0</sequence>
+  <logger>TollgateLogger</logger>
+  <level>SEVERE</level>
+  <class>tollbooth.TollgateLogger</class>
+  <method>accept</method>
+  <thread>1</thread>
+  <message>Hello World</message>
+</record>
+</log>

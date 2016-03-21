@@ -1,0 +1,31 @@
+package tollbooth;
+
+import java.io.IOException;
+import java.util.logging.FileHandler;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class TollgateLogger implements SimpleLogger{
+	private static final String loggerName = "TollgateLogger";
+	private static Logger logger = Logger.getLogger(loggerName);
+	
+	public TollgateLogger (String name) throws SecurityException, IOException{
+		Handler tollgateLoggerHandler = new FileHandler("%t/logAttempt.log");
+		Logger.getLogger(loggerName).addHandler(tollgateLoggerHandler);
+		Logger.getLogger(loggerName).setLevel(Level.FINEST);
+	}
+
+	@Override
+	public void accept(LogMessage message) {
+		// TODO Auto-generated method stub
+		logger.log(Level.SEVERE, message.getMessage());
+	}
+
+	@Override
+	public LogMessage getNextMessage() {
+		// TODO Auto-generated method stub
+		throw new RuntimeException("Method Not Implemented Yet");
+	}
+	
+}

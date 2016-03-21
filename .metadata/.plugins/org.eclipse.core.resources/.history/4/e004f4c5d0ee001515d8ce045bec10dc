@@ -1,4 +1,0 @@
-TODO: 
-X Gate is closed, receives open. No malfunction occurs and the gate is opened. Increases 'opens' by 1
-X Gate is open, receives open. No state change occurs. 
-- 

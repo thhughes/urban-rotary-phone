@@ -13,6 +13,9 @@
 package tollbooth;
 
 import static org.junit.Assert.*;
+
+import java.io.IOException;
+
 import org.junit.Test;
 import tollbooth.gatecontroller.*;
 
@@ -169,10 +172,10 @@ public class TollboothTest
 //	}
 	
 	@Test
-	public void sandbox() throws TollboothException
+	public void sandbox() throws TollboothException, IOException
 	{
 		final GateController controller = new TestGateController();
-		final SimpleLogger logger = new TollgateLogger("Toolgate Logger");
+		final SimpleLogger logger = new TollgateLogger("TEST_SANDBOX");
 		final TollGate gate = new TollGate(controller, logger);
 		
 		gate.open();

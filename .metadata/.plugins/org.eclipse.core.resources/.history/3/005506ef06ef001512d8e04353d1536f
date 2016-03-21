@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2016-03-20T21:46:19</date>
+  <millis>1458524779115</millis>
+  <sequence>0</sequence>
+  <logger>TollgateLogger</logger>
+  <level>INFO</level>
+  <class>tollbooth.TollgateLogger</class>
+  <method>&lt;init&gt;</method>
+  <thread>1</thread>
+  <message>Please</message>
+</record>
+<record>
+  <date>2016-03-20T21:46:19</date>
+  <millis>1458524779135</millis>
+  <sequence>1</sequence>
+  <logger>TollgateLogger</logger>
+  <level>FINE</level>
+  <class>tollbooth.TollgateLogger</class>
+  <method>&lt;init&gt;</method>
+  <thread>1</thread>
+  <message>Why:( </message>
+</record>
+<record>
+  <date>2016-03-20T21:46:19</date>
+  <millis>1458524779136</millis>
+  <sequence>2</sequence>
+  <logger>TollgateLogger</logger>
+  <level>SEVERE</level>
+  <class>tollbooth.TollgateLogger</class>
+  <method>accept</method>
+  <thread>1</thread>
+  <message>Hello World</message>
+</record>
+<record>
+  <date>2016-03-20T21:46:19</date>
+  <millis>1458524779138</millis>
+  <sequence>3</sequence>
+  <logger>TollgateLogger</logger>
+  <level>INFO</level>
+  <class>tollbooth.TollgateLogger</class>
+  <method>&lt;init&gt;</method>
+  <thread>1</thread>
+  <message>Please</message>
+</record>
+<record>
+  <date>2016-03-20T21:46:19</date>
+  <millis>1458524779139</millis>
+  <sequence>4</sequence>
+  <logger>TollgateLogger</logger>
+  <level>FINE</level>
+  <class>tollbooth.TollgateLogger</class>
+  <method>&lt;init&gt;</method>
+  <thread>1</thread>
+  <message>Why:( </message>
+</record>
+<record>
+  <date>2016-03-20T21:46:19</date>
+  <millis>1458524779140</millis>
+  <sequence>5</sequence>
+  <logger>TollgateLogger</logger>
+  <level>INFO</level>
+  <class>tollbooth.TollgateLogger</class>
+  <method>&lt;init&gt;</method>
+  <thread>1</thread>
+  <message>Please</message>
+</record>
+<record>
+  <date>2016-03-20T21:46:19</date>
+  <millis>1458524779141</millis>
+  <sequence>6</sequence>
+  <logger>TollgateLogger</logger>
+  <level>FINE</level>
+  <class>tollbooth.TollgateLogger</class>
+  <method>&lt;init&gt;</method>
+  <thread>1</thread>
+  <message>Why:( </message>
+</record>
+</log>

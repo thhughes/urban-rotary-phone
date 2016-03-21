@@ -1,21 +1,25 @@
 package tollbooth;
 
+import java.io.IOException;
+import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class TollgateLogger extends Logger implements SimpleLogger{
-
+public class TollgateLogger implements SimpleLogger{
+	private static final String loggerName = "TollgateLogger";
+	private static Logger logger;
+	private static FileHandler TollgateFileHandler;
 	
-	
-	public TollgateLogger (String name){
-		super(name, null);
-		this.info("Logger Name: "+name);
+	public TollgateLogger (String name) throws IOException{
+		logger = Logger.getLogger(loggerName);
+		TollgateFileHandler = new FileHandler("logs/"+name+".log");
+		logger.addHandler(TollgateFileHandler);
+		logger.setLevel(Level.ALL);
 	}
 
 	@Override
 	public void accept(LogMessage message) {
-		// TODO Auto-generated method stub
-		this.log(Level.SEVERE, message.getMessage());
+		logger.log(Level.SEVERE, message.getMessage());
 	}
 
 	@Override

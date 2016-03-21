@@ -1,0 +1,44 @@
+package tollbooth;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+//import java.io.IOException;
+//import java.util.logging.FileHandler;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
+
+public class TollgateLogger implements SimpleLogger{
+//	private static final String loggerName = "TollgateLogger";
+//	private static Logger logger;
+//	private static FileHandler TollgateFileHandler;
+	private PrintWriter someWriter;
+	
+	public TollgateLogger (String name) throws FileNotFoundException, UnsupportedEncodingException{
+//		logger = Logger.getLogger(loggerName);
+//		TollgateFileHandler = new FileHandler("mylog.txt");
+//		logger.addHandler(TollgateFileHandler);
+//		logger.setLevel(Level.ALL);
+//		logger.info("Please");
+//		logger.fine("Why:( ");
+		someWriter = new PrintWriter("SomeWriter.txt","UTF-8");
+		someWriter.println("the First line");
+		someWriter.println("The second line");
+	}
+
+	@Override
+	public void accept(LogMessage message) {
+		// TODO Auto-generated method stub
+
+		someWriter.println("Hello WOrld");
+		
+		
+	}
+
+	@Override
+	public LogMessage getNextMessage() {
+		// TODO Auto-generated method stub
+		throw new RuntimeException("Method Not Implemented Yet");
+	}
+	
+}

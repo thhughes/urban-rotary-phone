@@ -26,7 +26,6 @@ import tollbooth.gatecontroller.*;
 public class TollboothTest
 {
 	private static final String TollboothTestLogPath = "/logs/TollboothLoggerOutput/";
-	
 	@Test
 	public void createNewTollGateWithNoController()
 	{
@@ -43,7 +42,7 @@ public class TollboothTest
 	public void newGateControllerIsClosed() throws TollboothException
 	{
 		final GateController controller = new TestGateController();
-		final TollGate gate = new TollGate(controller, null);
+		final TollGate gate = new TollGate(controller, TollboothTestLogPath+"newGateControllerIsClosed");
 		assertFalse(gate.isOpen());
 	}
 

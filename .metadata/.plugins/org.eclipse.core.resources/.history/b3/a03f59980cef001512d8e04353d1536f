@@ -25,8 +25,7 @@ import tollbooth.gatecontroller.*;
  */
 public class TollboothTest
 {
-	private static final String TollboothTestLogPath = "/logs/TollboothLoggerOutput/";
-	
+
 	@Test
 	public void createNewTollGateWithNoController()
 	{
@@ -172,5 +171,14 @@ public class TollboothTest
 		assertEquals("open: successful", message.getMessage());
 	}
 	
+	@Test
+	public void sandbox() throws TollboothException, IOException
+	{
+		final GateController controller = new TestGateController();
+		final SimpleLogger logger = new TollgateLogger("TEST_SANDBOX");
+		final TollGate gate = new TollGate(controller, logger);
+		
+		gate.open();
+	}
 	
 }

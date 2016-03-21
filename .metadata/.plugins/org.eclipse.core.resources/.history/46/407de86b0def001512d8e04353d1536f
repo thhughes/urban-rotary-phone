@@ -22,7 +22,7 @@ public class TollgateLoggerTest {
 	@Test
 	public void createNewTollGateLoggerWithName() throws IOException
 	{
-		assertNotNull(new TollboothLogger(testLogPath+"TEST_NAMEDLOGGERTEST"));
+		assertNotNull(new TollgateLogger(testLogPath+"TEST_NAMEDLOGGERTEST"));
 	}
 	
 }

@@ -11,18 +11,17 @@ public class TollgateLoggerTest {
 
 	private static final String testLogPath = "/logs/TollgateLoggerTests/";
 	
-// This test is commented out for file system clenliness. It will create a 
-	// null.log file becasue 'null' is passed to the logger. 
-//	@Test
-//	public void createNewTollGateLogger() throws IOException
-//	{
-//		assertNotNull(new TollgateLogger(null));
-//	}
+	
+	@Test
+	public void createNewTollGateLogger() throws IOException
+	{
+		assertNotNull(new TollgateLogger(null));
+	}
 	
 	@Test
 	public void createNewTollGateLoggerWithName() throws IOException
 	{
-		assertNotNull(new TollboothLogger(testLogPath+"TEST_NAMEDLOGGERTEST"));
+		assertNotNull(new TollgateLogger("TEST_NAMEDLOGGERTEST"));
 	}
 	
 }

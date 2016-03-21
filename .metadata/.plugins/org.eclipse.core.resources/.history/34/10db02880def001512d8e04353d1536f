@@ -26,7 +26,6 @@ import tollbooth.gatecontroller.*;
 public class TollboothTest
 {
 	private static final String TollboothTestLogPath = "/logs/TollboothLoggerOutput/";
-	
 	@Test
 	public void createNewTollGateWithNoController()
 	{

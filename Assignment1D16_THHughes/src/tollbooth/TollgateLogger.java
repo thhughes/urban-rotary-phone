@@ -1,0 +1,73 @@
+/*******************************************************************************
+ * This files was developed for CS4233: Object-Oriented Analysis & Design.
+ * The course was taken at Worcester Polytechnic Institute.
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Copyright ©2016 Troy H. Hughes
+ *******************************************************************************/
+
+package tollbooth;
+
+
+import java.util.LinkedList;
+//import java.util.NoSuchElementException;
+import java.util.Queue;
+//import java.util.logging.FileHandler;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
+/**
+ * The TollgateLogger is a SimpleLogger implementation using a linkedList queue for 
+ * log management
+ * @version 3/21/16
+ *
+ */
+public class TollgateLogger implements SimpleLogger{
+	/* Information for utilizing the Logger class
+	private static final String loggerName = "TollgateLogger";
+	private static Logger logger;
+	private static FileHandler TollgateFileHandler;
+	*/
+	
+	private Queue<LogMessage> messageQueue;
+	
+	/**
+	 * Constructor for TollgateLogger
+	 * @param name of the logger, use to help with log placement. Format as: "/path/from/project/base/fileName". Function will add ".log"
+	 */
+	public TollgateLogger (String name){
+		/* Information for using the logger class - not needed for this implementation
+		logger = Logger.getLogger(loggerName);
+		TollgateFileHandler = new FileHandler(name+".log");
+		logger.addHandler(TollgateFileHandler);
+		logger.setLevel(Level.ALL);
+		*/ 
+		messageQueue = new LinkedList<LogMessage>();
+	}
+
+	@Override
+	public void accept(LogMessage message) {
+		//logger.log(Level.SEVERE, message.getMessage());
+		messageQueue.add(message);
+	}
+
+	@Override
+	public LogMessage getNextMessage(){
+		if(messageQueue.size() < 1){
+			return null;
+		}
+		return messageQueue.remove();
+	}
+	
+	/**
+	 * Returns the length of the Log Data Structure
+	 * @return int :: Number of items in the queue
+	 */
+	public int logLength(){
+		return messageQueue.size();
+	}
+	
+}

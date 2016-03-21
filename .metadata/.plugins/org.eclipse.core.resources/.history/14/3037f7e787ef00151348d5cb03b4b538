@@ -1,0 +1,34 @@
+package tollbooth;
+
+import static org.junit.Assert.assertNotNull;
+
+import java.io.IOException;
+
+import org.junit.Test;
+import tollbooth.gatecontroller.TestGateController;
+
+public class TollgateLoggerTest {
+
+	private static final String testLogPath = "/logs/TollgateLoggerTests/";
+	
+
+	@Test
+	public void createNewTollGateLogger() throws IOException
+	{
+		assertNotNull(new TollboothLogger(null));
+	}
+	
+	@Test
+	public void createNewTollGateLoggerWithName() throws IOException
+	{
+		assertNotNull(new TollboothLogger(testLogPath+"TEST_NAMEDLOGGERTEST"));
+	}
+	
+	@Test
+	public void addMessageToToolBoothLogger()
+	{
+		SimpleLogger tblogger = new ToolboothLogger(testLogPath+"TEST_addMessage");
+		
+		
+	}
+}

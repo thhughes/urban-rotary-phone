@@ -24,6 +24,8 @@ public class TollGate
 	private final SimpleLogger logger;
 	private Integer numOpens;
 	private Integer numCloses;
+	private int numberRetry; 
+	private boolean willNotRespondMode;
 	
 	/**
 	 * Constructor that takes the actual gate controller and the logger.
@@ -33,8 +35,10 @@ public class TollGate
 	public TollGate(GateController controller, SimpleLogger logger) {
 		this.controller = controller;
 		this.logger = logger;
-		this.numCloses = new Integer(0);
-		this.numOpens = new Integer(0);
+		numCloses = new Integer(0);
+		numOpens = new Integer(0);
+		numberRetry = 3;
+		willNotRespondMode = false;
 		
 		
 	}
@@ -45,11 +49,39 @@ public class TollGate
 	 */
 	public void open() throws TollboothException
 	{
-		if (!controller.isOpen()){
-			controller.open();
-			this.numOpens++;
-			logger.accept(new LogMessage("Hello World"));
+		
+		int numTry = 0;
+		// If it's open
+		if (controller.isOpen()){
+			return;
 		}
+		// If it's not responding
+		if (willNotRespondMode){
+			logger.accept(new LogMessage("open: will not respond"));
+			return; 
+		}
+		// Normal Runtime
+		for (;(numTry < numberRetry);numTry++){
+			try{
+				controller.open();
+				numOpens++;
+				if (numTry > 0){
+					logger.accept(new LogMessage("open: successful"));
+				}
+				break;
+				
+			}catch (TollboothException e){
+				if (numTry==2){
+					logger.accept(new LogMessage("open: unrecoverable malfunction",e));
+					willNotRespondMode = true;
+					throw new TollboothException("open: unrecoverable malfunction");
+				}else{
+					logger.accept(new LogMessage("open: malfunction",e));
+				}
+				
+			}
+		}
+		
 	}
 	
 	/**
@@ -60,7 +92,7 @@ public class TollGate
 	{
 		if (controller.isOpen()){
 			controller.close();
-			this.numCloses++;
+			numCloses++;
 		}
 	}
 	
@@ -91,7 +123,7 @@ public class TollGate
 	 */
 	public int getNumberOfOpens()
 	{
-		return this.numOpens;
+		return numOpens;
 	}
 	
 	/**
@@ -101,6 +133,6 @@ public class TollGate
 	public int getNumberOfCloses()
 	{
 		// To be completed
-		return this.numCloses;
+		return numCloses;
 	}
 }

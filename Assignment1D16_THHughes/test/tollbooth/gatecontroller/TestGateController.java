@@ -21,12 +21,18 @@ import tollbooth.TollboothException;
 public class TestGateController implements GateController
 {
 	boolean isOpen;
+	boolean isResponsive; 
+	int numFails; 
+	int failCount;
 	/**
 	 * Constructor for the test gate controller.
 	 */
 	public TestGateController()
 	{
 		isOpen = false;
+		isResponsive = true;
+		numFails = 0;
+		failCount = 0;
 	}
 	
 	/*
@@ -35,8 +41,20 @@ public class TestGateController implements GateController
 	@Override
 	public void open() throws TollboothException
 	{
+		if(numFails > 0){
+			numFails--;
+			failCount++;
+			if (failCount == 3){
+				throw new TollboothException("open: unrecoverable malfunction");
+			}
+			throw new TollboothException("Open: Failed");
+		}
+		if(!isResponsive){
+			throw new TollboothException("System Unresponsive");
+		}
 		isOpen = true;
 	}
+	
 
 	/*
 	 * @see tollbooth.gatecontroller.GateController#close()
@@ -44,6 +62,17 @@ public class TestGateController implements GateController
 	@Override
 	public void close() throws TollboothException
 	{
+		if(numFails > 0){
+			numFails--;
+			failCount++;
+			if (failCount == 2){
+				throw new TollboothException("close: unrecoverable malfunction");
+			}
+			throw new TollboothException("Close: Failed");
+		}
+		if(!isResponsive){
+			throw new TollboothException("System Unresponsive");
+		}
 		isOpen = false;
 
 	}
@@ -54,6 +83,17 @@ public class TestGateController implements GateController
 	@Override
 	public void reset() throws TollboothException
 	{
+		if(numFails > 0){
+			numFails--;
+			failCount++;
+			if (failCount == 3){
+				throw new TollboothException("System Unresponsive");
+			}
+			throw new TollboothException("Reset: Failed");
+		}
+		if(!isResponsive){
+			throw new TollboothException("System Unresponsive");
+		}
 		isOpen = false;
 
 	}
@@ -65,6 +105,18 @@ public class TestGateController implements GateController
 	public boolean isOpen() throws TollboothException
 	{
 		return isOpen;
+	}
+	
+	/**
+	 * This tells the gate to fail N times and sets the system to be in unresponsive mode or not. 
+	 * @param N : number of times the gate fails. 
+	 * @param unresponsive : True for 'will not respond' state
+	 */
+	public void failNTimes(int N, boolean unresponsive)
+	{
+		numFails = N;
+		isResponsive = !unresponsive;
+		
 	}
 
 }

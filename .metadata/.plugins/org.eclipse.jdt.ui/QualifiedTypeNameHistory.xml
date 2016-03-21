@@ -4,4 +4,7 @@
 <fullyQualifiedTypeName name="java.util.logging.Handler"/>
 <fullyQualifiedTypeName name="java.util.logging.FileHandler"/>
 <fullyQualifiedTypeName name="java.io.PrintWriter"/>
+<fullyQualifiedTypeName name="java.util.Queue"/>
+<fullyQualifiedTypeName name="java.util.LinkedList"/>
+<fullyQualifiedTypeName name="java.util.NoSuchElementException"/>
 </qualifiedTypeNameHistroy>

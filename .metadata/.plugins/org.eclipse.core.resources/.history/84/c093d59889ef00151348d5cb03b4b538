@@ -1,0 +1,12 @@
+TODO: 
+X Gate is closed, receives open. No malfunction occurs and the gate is opened. Increases 'opens' by 1
+X Gate is open, receives open. No state change occurs. 
+X Gate is ope, receives the "CLOSE" message. Nothing bad happens and it closes. increment closes by 1
+X Gate is closed, receives close, no change in state or stats
+X Add a message to the TollboothLogger
+X Remove a message from the toolboothLogger
+X Add multiple messages to the toolboothLogger
+	- Correct number of messages are added
+X null is returned when the toolboothLogger has no messages
+
+	

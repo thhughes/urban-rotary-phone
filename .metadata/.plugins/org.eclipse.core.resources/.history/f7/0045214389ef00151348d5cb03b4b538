@@ -1,0 +1,53 @@
+package tollbooth;
+
+import java.io.IOException;
+import java.util.LinkedList;
+import java.util.NoSuchElementException;
+import java.util.Queue;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class TollboothLogger implements SimpleLogger{
+	/* Information for utilizing the Logger class
+	private static final String loggerName = "TollgateLogger";
+	private static Logger logger;
+	private static FileHandler TollgateFileHandler;
+	*/
+	
+	private Queue<LogMessage> messageQueue;
+	
+	/**
+	 * Constructor for TollgateLogger
+	 * @param name of the logger, use to help with log placement. Format as: "/path/from/project/base/fileName". Function will add ".log"
+	 * @throws IOException will throw for many reasons, namely a file path that doesn't exist. 
+	 */
+	public TollboothLogger (String name){
+		/* Information for using the logger class - not needed for this implementation
+		logger = Logger.getLogger(loggerName);
+		TollgateFileHandler = new FileHandler(name+".log");
+		logger.addHandler(TollgateFileHandler);
+		logger.setLevel(Level.ALL);
+		*/ 
+		messageQueue = new LinkedList<LogMessage>();
+	}
+
+	@Override
+	public void accept(LogMessage message) {
+		//logger.log(Level.SEVERE, message.getMessage());
+		messageQueue.add(message);
+	}
+
+	@Override
+	public LogMessage getNextMessage() throws NoSuchElementException{
+		return messageQueue.remove();
+	}
+	
+	public int logLength(){
+		if (messageQueue.size() == 0){
+			return null;
+		}
+		return messageQueue.size();
+	}
+	
+}

@@ -43,7 +43,8 @@ public class TollboothTest
 	public void newGateControllerIsClosed() throws TollboothException
 	{
 		final GateController controller = new TestGateController();
-		final TollGate gate = new TollGate(controller, null);
+		final SimpleLogger logger = new TollgateLogger("TheLogger");
+		final TollGate gate = new TollGate(controller, logger);
 		assertFalse(gate.isOpen());
 	}
 
@@ -51,7 +52,8 @@ public class TollboothTest
 	public void gateControllerIsOpenAfterOpenMessage() throws TollboothException
 	{
 		final GateController controller = new TestGateController();
-		final TollGate gate = new TollGate(controller, null);
+		final SimpleLogger logger = new TollgateLogger("TheLogger");
+		final TollGate gate = new TollGate(controller, logger);
 		gate.open();
 		assertTrue(gate.isOpen());
 	}
@@ -60,7 +62,8 @@ public class TollboothTest
 	public void gateControllerOpensAndIncrementsStatsWhenGateIsClosed() throws TollboothException
 	{
 		final GateController controller = new TestGateController();
-		final TollGate gate = new TollGate(controller, null);
+		final SimpleLogger logger = new TollgateLogger("TheLogger");
+		final TollGate gate = new TollGate(controller, logger);
 		gate.open();
 		assertEquals(1,gate.getNumberOfOpens());
 	}
@@ -69,7 +72,8 @@ public class TollboothTest
 	public void gateControllerOpensAndDoesNotIncrementsStatsWhenGateIsOpen() throws TollboothException
 	{
 		final GateController controller = new TestGateController();
-		final TollGate gate = new TollGate(controller, null);
+		final SimpleLogger logger = new TollgateLogger("TheLogger");
+		final TollGate gate = new TollGate(controller, logger);
 		gate.open();
 		gate.open();
 		assertEquals(1,gate.getNumberOfOpens());
@@ -79,7 +83,8 @@ public class TollboothTest
 	public void gateControllerNumberClosesDefaultCorrect() throws TollboothException
 	{
 		final GateController controller = new TestGateController();
-		final TollGate gate = new TollGate(controller, null);
+		final SimpleLogger logger = new TollgateLogger("TheLogger");
+		final TollGate gate = new TollGate(controller, logger);
 		assertEquals(0, gate.getNumberOfCloses());
 	}
 	
@@ -87,7 +92,8 @@ public class TollboothTest
 	public void gateControllerClosesWhenReceivesCloseMessage() throws TollboothException
 	{
 		final GateController controller = new TestGateController();
-		final TollGate gate = new TollGate(controller, null);
+		final SimpleLogger logger = new TollgateLogger("TheLogger");
+		final TollGate gate = new TollGate(controller, logger);
 		gate.open();
 		gate.close();
 		assertFalse(gate.isOpen());
@@ -97,7 +103,8 @@ public class TollboothTest
 	public void gateControllerNumberOpensDefaultCorrect() throws TollboothException
 	{
 		final GateController controller = new TestGateController();
-		final TollGate gate = new TollGate(controller, null);
+		final SimpleLogger logger = new TollgateLogger("TheLogger");
+		final TollGate gate = new TollGate(controller, logger);
 		assertEquals(0, gate.getNumberOfOpens());
 	}
 	
@@ -105,7 +112,8 @@ public class TollboothTest
 	public void gateControllerDoesntChangeStatsOnCloseWhenClosed() throws TollboothException
 	{
 		final GateController controller = new TestGateController();
-		final TollGate gate = new TollGate(controller, null);
+		final SimpleLogger logger = new TollgateLogger("TheLogger");
+		final TollGate gate = new TollGate(controller, logger);
 		gate.close();
 		assertEquals(0, gate.getNumberOfCloses());
 	}
@@ -114,7 +122,8 @@ public class TollboothTest
 	public void gateControllerCorrectlyIncrementsCloseCountWhenReceivesCloseAndIsOpen() throws TollboothException
 	{
 		final GateController controller = new TestGateController();
-		final TollGate gate = new TollGate(controller, null);
+		final SimpleLogger logger = new TollgateLogger("TheLogger");
+		final TollGate gate = new TollGate(controller, logger);
 		gate.open();
 		gate.close();
 		assertEquals(1,gate.getNumberOfCloses());
@@ -124,7 +133,8 @@ public class TollboothTest
 	public void gatControllerCorrectlyClosesGateWhenResetIsUsedWhileOpen() throws TollboothException
 	{
 		final GateController controller = new TestGateController();
-		final TollGate gate = new TollGate(controller, null);
+		final SimpleLogger logger = new TollgateLogger("TheLogger");
+		final TollGate gate = new TollGate(controller, logger);
 		gate.open();
 		gate.reset();
 		
@@ -135,19 +145,19 @@ public class TollboothTest
 	public void gatControllerCorrectlyClosesGateWhenResetIsUsedWhileClosed() throws TollboothException
 	{
 		final GateController controller = new TestGateController();
-		final TollGate gate = new TollGate(controller, null);
+		final SimpleLogger logger = new TollgateLogger("TheLogger");
+		final TollGate gate = new TollGate(controller, logger);
 		gate.reset();
 		assertFalse(gate.isOpen());	
 	}
-	
-	
 	
 	
 	@Test
 	public void gateControllerCorrectlyLeavesStatsAloneWhenResetIsUsedWhileOpen() throws TollboothException
 	{
 		final GateController controller = new TestGateController();
-		final TollGate gate = new TollGate(controller, null);
+		final SimpleLogger logger = new TollgateLogger("TheLogger");
+		final TollGate gate = new TollGate(controller, logger);
 		gate.open();
 		int numCloses = gate.getNumberOfCloses();
 		gate.reset();
@@ -155,22 +165,242 @@ public class TollboothTest
 	}
 	
 	@Test
-	public void gateOpensAfterOneMalfunction() throws TollboothException
+	public void gateControllerOpensOnSingleFailureForOpen() throws TollboothException
 	{
-		/**
-		 * NOTE: you will need to have a different test GateController or modify the
-		 * current one to be programmed to fail opening one time before opening correctly.
-		 * You will also need to create your own instance of a SimpleLogger and pass it into the constructor. 
-		 */
-		final GateController controller = new TestGateController();
-		final SimpleLogger logger = null;		// put in an instance of your SimpleLogger implementation
+		final TestGateController controller = new TestGateController();
+		final SimpleLogger logger = new TollgateLogger("TheLogger");
 		final TollGate gate = new TollGate(controller, logger);
+		controller.failNTimes(1,false);
 		gate.open();
+		assertTrue(gate.isOpen());
+		
+	}
+	
+	@Test
+	public void gateControllerOnlyIncrementsStatsByOneOnFailureToOpenWhileClosed() throws TollboothException
+	{
+		final TestGateController controller = new TestGateController();
+		final SimpleLogger logger = new TollgateLogger("TheLogger");
+		final TollGate gate = new TollGate(controller, logger);
+		controller.failNTimes(1,false);
+		gate.open();
+		assertEquals(1, gate.getNumberOfOpens());
+		
+	}
+	
+	
+	@Test
+	public void gateControllerCreatesCorrectMessagesOnSingleFailureToOpenWhileClosed() throws TollboothException
+	{
+
+		final TestGateController controller = new TestGateController();
+		final SimpleLogger logger = new TollgateLogger("TheLogger");
+		final TollGate gate = new TollGate(controller, logger);
+		controller.failNTimes(1,false);
+		gate.open();
+		
 		LogMessage message = logger.getNextMessage();
 		assertEquals("open: malfunction", message.getMessage());
 		message = logger.getNextMessage();
 		assertEquals("open: successful", message.getMessage());
 	}
+	
+	@Test
+	public void gateControllerLoggsAnErrorWhenOpenFailsFirstTimeOnSingleFailureWhileClosed() throws TollboothException
+	{
+
+		final TestGateController controller = new TestGateController();
+		final SimpleLogger logger = new TollgateLogger("TheLogger");
+		final TollGate gate = new TollGate(controller, logger);
+		controller.failNTimes(1,false);
+		gate.open();
+		
+		LogMessage message = logger.getNextMessage();
+		assertTrue(message.hasCause());
+	}
+	
+	@Test
+	public void gateControllerLoggsCorrectErrorWhenOpenFailsFirstTimeOnSingleFailureWhileClosed() throws TollboothException
+	{
+
+		final TestGateController controller = new TestGateController();
+		final SimpleLogger logger = new TollgateLogger("TheLogger");
+		final TollGate gate = new TollGate(controller, logger);
+		controller.failNTimes(1,false);
+		gate.open();
+		
+		LogMessage message = logger.getNextMessage();
+		assertNotNull(message.getCause());
+	}
+
+
+	
+	@Test
+	public void gateControllerOpensGateWhileClosedWhenGateFailsTwoTimes() throws TollboothException
+	{
+		final TestGateController controller = new TestGateController();
+		final SimpleLogger logger = new TollgateLogger("TheLogger");
+		final TollGate gate = new TollGate(controller, logger);
+		controller.failNTimes(2,false);
+		gate.open();
+		assertTrue(gate.isOpen());
+	}
+	
+	@Test
+	public void gateControllerDoesNotOpenGateWhileClosedWhenGateFailsThreeTimes() throws TollboothException
+	{
+		final TestGateController controller = new TestGateController();
+		final SimpleLogger logger = new TollgateLogger("TheLogger");
+		final TollGate gate = new TollGate(controller, logger);
+		controller.failNTimes(3,false);
+		try{
+			gate.open();
+		}catch(TollboothException e){
+			
+		}
+		assertFalse(gate.isOpen());
+	}
+	
+	@Test
+	public void gateControllerCorrectlyLogsWhileOpensGateWhileClosedWhenGateFailsThreeTimes() throws TollboothException
+	{
+		final TestGateController controller = new TestGateController();
+		final SimpleLogger logger = new TollgateLogger("TheLogger");
+		final TollGate gate = new TollGate(controller, logger);
+		controller.failNTimes(3,true);
+		try{
+			gate.open();
+		}catch(TollboothException e){
+			
+		}
+		
+		assertFalse(gate.isOpen());
+		LogMessage message = logger.getNextMessage();
+		assertEquals("open: malfunction", message.getMessage());
+		message = logger.getNextMessage();
+		assertEquals("open: malfunction", message.getMessage());
+		message = logger.getNextMessage();
+		assertEquals("open: unrecoverable malfunction", message.getMessage());
+		assertNotNull(message.getCause());
+	}
+	
+	@Test
+	public void gateControllerCorrectlyThrowsErrorWhileOpensGateWhileClosedWhenGateFailsThreeTimes() throws TollboothException
+	{
+		final TestGateController controller = new TestGateController();
+		final SimpleLogger logger = new TollgateLogger("TheLogger");
+		final TollGate gate = new TollGate(controller, logger);
+		controller.failNTimes(3,true);
+		try{
+			gate.open();
+			assertTrue(false);					// This will always fail, an error should be thrown here. 
+		}catch(TollboothException e){
+			assertNotNull(e);
+		}
+
+		
+	}
+	
+	@Test
+	public void gateControllerFailsToOpenGateWhileClosedWhenGateFailsThreeTimesGateBecomesUnresponsive() throws TollboothException
+	{
+		final TestGateController controller = new TestGateController();
+		final SimpleLogger logger = new TollgateLogger("TheLogger");
+		final TollGate gate = new TollGate(controller, logger);
+		controller.failNTimes(3,true);
+		try{
+			gate.open();
+		}catch(TollboothException e){
+			
+		}
+		assertFalse(gate.isOpen());
+	}
+	
+	@Test
+	public void gateControllerDoesntModifyStatsIfInWillNotRespondMode() throws TollboothException
+	{
+		final TestGateController controller = new TestGateController();
+		final SimpleLogger logger = new TollgateLogger("TheLogger");
+		final TollGate gate = new TollGate(controller, logger);
+		controller.failNTimes(3,true);
+		try{
+			gate.open();
+		}catch(TollboothException e){
+			
+		}
+		gate.open();
+		
+		assertEquals(0, gate.getNumberOfOpens());
+		
+	}
+	
+	@Test
+	public void gateControllerLogsCorrectlyIfInWillNotRespondMode() throws TollboothException
+	{
+		final TestGateController controller = new TestGateController();
+		final SimpleLogger logger = new TollgateLogger("TheLogger");
+		final TollGate gate = new TollGate(controller, logger);
+		controller.failNTimes(3,true);
+		try{
+			gate.open();
+		}catch(TollboothException e){
+			
+		}
+		gate.open();
+		
+		LogMessage message = logger.getNextMessage();
+		assertEquals("open: malfunction", message.getMessage());
+		message = logger.getNextMessage();
+		assertEquals("open: malfunction", message.getMessage());
+		message = logger.getNextMessage();
+		assertEquals("open: unrecoverable malfunction", message.getMessage());
+		message = logger.getNextMessage();
+		assertEquals("open: will not respond", message.getMessage());
+	}
+	
+//	@Test
+//	public void gateControllerSuccedsToCloseGateWhileOpenAfterOneFailure() throws TollboothException
+//	{
+//		final TestGateController controller = new TestGateController();
+//		final SimpleLogger logger = new TollgateLogger("TheLogger");
+//		final TollGate gate = new TollGate(controller, logger);
+//		gate.open();
+//		controller.failNTimes(1,false);
+//		gate.close();
+//		
+//		assertFalse(gate.isOpen());
+//	}
+//	
+//	@Test
+//	public void gateControllerLogsSingleFailureCorrectly() throws TollboothException
+//	{
+//		final TestGateController controller = new TestGateController();
+//		final SimpleLogger logger = new TollgateLogger("TheLogger");
+//		final TollGate gate = new TollGate(controller, logger);
+//		gate.open();
+//		controller.failNTimes(1,false);
+//		gate.close();
+//		
+//		LogMessage message = logger.getNextMessage();
+//		assertEquals("close: malfunction", message.getMessage());
+//		assertNotNull(message.getCause());
+//		message = logger.getNextMessage();
+//		assertEquals("close: successful", message.getMessage());
+//	}
+//	
+//	@Test
+//	public void gateControllerFailsToCloseGateAfter3Failures() throws TollboothException
+//	{
+//		final TestGateController controller = new TestGateController();
+//		final SimpleLogger logger = new TollgateLogger("TheLogger");
+//		final TollGate gate = new TollGate(controller, logger);
+//		gate.open();
+//		controller.failNTimes(3,true);
+//		gate.close();
+//		
+//		assertTrue(gate.isOpen());
+//	}
+	
 	
 	
 }

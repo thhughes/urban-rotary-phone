@@ -90,9 +90,36 @@ public class TollGate
 	 */
 	public void close() throws TollboothException
 	{
-		if (controller.isOpen()){
-			controller.close();
-			numCloses++;
+		int numTry = 0;
+		// If it's closed
+		if (!controller.isOpen()){
+			return;
+		}
+		// If it's not responding
+		if (willNotRespondMode){
+			logger.accept(new LogMessage("close: will not respond"));
+			return; 
+		}
+		// Normal Runtime
+		for (;(numTry < numberRetry);numTry++){
+			try{
+				controller.close();
+				numCloses++;
+				if (numTry > 0){
+					logger.accept(new LogMessage("close: successful"));
+				}
+				break;
+				
+			}catch (TollboothException e){
+				if (numTry==2){
+					logger.accept(new LogMessage("close: unrecoverable malfunction",e));
+					willNotRespondMode = true;
+					throw new TollboothException("close: unrecoverable malfunction");
+				}else{
+					logger.accept(new LogMessage("close: malfunction",e));
+				}
+				
+			}
 		}
 	}
 	

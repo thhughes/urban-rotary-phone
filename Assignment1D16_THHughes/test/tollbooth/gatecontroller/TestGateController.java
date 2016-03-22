@@ -41,6 +41,9 @@ public class TestGateController implements GateController
 	@Override
 	public void open() throws TollboothException
 	{
+		if(!isResponsive){
+			throw new TollboothException("System Unresponsive");
+		}
 		if(numFails > 0){
 			numFails--;
 			failCount++;
@@ -48,9 +51,6 @@ public class TestGateController implements GateController
 				throw new TollboothException("open: unrecoverable malfunction");
 			}
 			throw new TollboothException("Open: Failed");
-		}
-		if(!isResponsive){
-			throw new TollboothException("System Unresponsive");
 		}
 		isOpen = true;
 	}
@@ -62,6 +62,9 @@ public class TestGateController implements GateController
 	@Override
 	public void close() throws TollboothException
 	{
+		if(!isResponsive){
+			throw new TollboothException("System Unresponsive");
+		}
 		if(numFails > 0){
 			numFails--;
 			failCount++;
@@ -69,9 +72,6 @@ public class TestGateController implements GateController
 				throw new TollboothException("close: unrecoverable malfunction");
 			}
 			throw new TollboothException("Close: Failed");
-		}
-		if(!isResponsive){
-			throw new TollboothException("System Unresponsive");
 		}
 		isOpen = false;
 
@@ -83,6 +83,9 @@ public class TestGateController implements GateController
 	@Override
 	public void reset() throws TollboothException
 	{
+		if(!isResponsive){
+			throw new TollboothException("System Unresponsive");
+		}
 		if(numFails > 0){
 			numFails--;
 			failCount++;
@@ -90,9 +93,6 @@ public class TestGateController implements GateController
 				throw new TollboothException("System Unresponsive");
 			}
 			throw new TollboothException("Reset: Failed");
-		}
-		if(!isResponsive){
-			throw new TollboothException("System Unresponsive");
 		}
 		isOpen = false;
 
@@ -117,6 +117,15 @@ public class TestGateController implements GateController
 		numFails = N;
 		isResponsive = !unresponsive;
 		
+	}
+	
+	/**
+	 * This tells if the gate is responsive. 
+	 * @return False if the system is in 'will not respond more'
+	 */
+	public boolean isResponsive()
+	{
+		return isResponsive;
 	}
 
 }

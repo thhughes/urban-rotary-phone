@@ -5,7 +5,7 @@
 			<null/>
 		</resourceFilter>
 	
-		#Fri Mar 18 18:04:34 EDT 2016
+		#Mon Mar 21 18:49:09 EDT 2016
 		com.instantiations.assist.eclipse.numberOfFieldsMetric.enabled=true
 		com.instantiations.assist.eclipse.averageBlockDepthMetric.enabled=true
 		com.instantiations.assist.eclipse.numberOfPackagesMetric.enabled=true
@@ -23,8 +23,8 @@
 		com.instantiations.assist.eclipse.numberOfConstructorsMetric.enabled=true
 		com.instantiations.assist.eclipse.averageParametersPerMethodMetric.enabled=true
 		com.instantiations.assist.eclipse.numberOfSemicolonsMetric.enabled=true
-		com.instantiations.assist.eclipse.commentsRatioMetric.enabled=true
 		com.instantiations.assist.eclipse.linesOfCodeMetric.enabled=true
+		com.instantiations.assist.eclipse.commentsRatioMetric.enabled=true
 		com.instantiations.assist.eclipse.averageFieldsPerTypeMetric.enabled=true
 		com.instantiations.assist.eclipse.numberOfCommentsMetric.enabled=true
 	</metricSet>

@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="test (2)" project="Assignment1D16_THHughes" tests="56" started="56" failures="5" errors="0" ignored="0">
+  <testsuite name="tollbooth.TollboothTest" time="0.002">
+    <testcase name="gateIsClosedAndResponsiveResetIsSentTestStatsAreCorrect" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateControllerLoggsAnErrorWhenOpenFailsFirstTimeOnSingleFailureWhileClosed" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateControllerClosesWhenReceivesCloseMessage" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateIsOpenAndResponsiveResetIsSentTestStatsAreCorrect" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateIsOpenAndInNotResponseModeAndStatsStayTheSameWhenReceiveReset" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateControllerOpensGateWhileClosedWhenGateFailsTwoTimes" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateControllerStatsAreCorrectAfterItFailsToCloseGateAfter3Failures" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateControllerLoggsCorrectErrorWhenOpenFailsFirstTimeOnSingleFailureWhileClosed" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gatControllerCorrectlyClosesGateWhenResetIsUsedWhileOpen" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateIsOpenAndInResponseModeResetIsSentButFailsAfterThreeTrysTestGateMessagesAreLoggedCorrectly" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateControllerDoesNotOpenGateWhileClosedWhenGateFailsThreeTimes" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateIsClosedAndResponsiveResetIsSentTestGateStaysClosed" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateControllerDoesntChangeStatsOnCloseWhenClosed" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateIsClosedAndResponsiveResetIsSentTestLogIsCorrectCorrect" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateIsOpenAndResponsiveResetIsSentTestLogIsCorrectCorrect" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateIsClosedAndInNotResponseModeAndCorrectMessagesAreLoggedWhenReceiveReset" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateControllerCreatesCorrectMessagesOnSingleFailureToOpenWhileClosed" classname="tollbooth.TollboothTest" time="0.0">
+      <failure>
+        <expected>open: malfunction</expected>
+        <actual>open: malfunction Open: Failed</actual>org.junit.ComparisonFailure: expected:&lt;open: malfunction[]&gt; but was:&lt;open: malfunction[ Open: Failed]&gt;
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at org.junit.Assert.assertEquals(Assert.java:144)
+	at tollbooth.TollboothTest.gateControllerCreatesCorrectMessagesOnSingleFailureToOpenWhileClosed(TollboothTest.java:203)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+
+</failure>
+    </testcase>
+    <testcase name="gateControllerThrowsExceptionWhenItFailsToCloseGateAfter3Failures" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateControllerCorrectlyIncrementsCloseCountWhenReceivesCloseAndIsOpen" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateControllerLogsCorrectlyIfInWillNotRespondMode" classname="tollbooth.TollboothTest" time="0.0">
+      <failure>
+        <expected>open: malfunction</expected>
+        <actual>open: malfunction System Unresponsive</actual>org.junit.ComparisonFailure: expected:&lt;open: malfunction[]&gt; but was:&lt;open: malfunction[ System Unresponsive]&gt;
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at org.junit.Assert.assertEquals(Assert.java:144)
+	at tollbooth.TollboothTest.gateControllerLogsCorrectlyIfInWillNotRespondMode(TollboothTest.java:352)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+
+</failure>
+    </testcase>
+    <testcase name="gateControllerCorrectlyLeavesStatsAloneWhenResetIsUsedWhileOpen" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateControllerFailsToCloseGateAfter3Failures" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateControllerHasCorrectMessagesWhenFailsToCloseGateWhileItsOpenAndIsInWillNotRespond" classname="tollbooth.TollboothTest" time="0.0">
+      <failure>
+        <expected>close: malfunction</expected>
+        <actual>close: malfunction System Unresponsive</actual>org.junit.ComparisonFailure: expected:&lt;close: malfunction[]&gt; but was:&lt;close: malfunction[ System Unresponsive]&gt;
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at org.junit.Assert.assertEquals(Assert.java:144)
+	at tollbooth.TollboothTest.gateControllerHasCorrectMessagesWhenFailsToCloseGateWhileItsOpenAndIsInWillNotRespond(TollboothTest.java:567)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+
+</failure>
+    </testcase>
+    <testcase name="gateIsOpenAndInNotResponseModeAndResetIsSentGateStaysOpen" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="createNewTollGateWithAController" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateIsOpenAndInNotResponseModeAndCorrectMessagesAreLoggedWhenReceiveReset" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gatControllerCorrectlyClosesGateWhenResetIsUsedWhileClosed" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateControllerLogsSingleFailureCorrectly" classname="tollbooth.TollboothTest" time="0.0">
+      <failure>
+        <expected>close: malfunction</expected>
+        <actual>close: malfunction Close: Failed</actual>org.junit.ComparisonFailure: expected:&lt;close: malfunction[]&gt; but was:&lt;close: malfunction[ Close: Failed]&gt;
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at org.junit.Assert.assertEquals(Assert.java:144)
+	at tollbooth.TollboothTest.gateControllerLogsSingleFailureCorrectly(TollboothTest.java:420)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+
+</failure>
+    </testcase>
+    <testcase name="gateControllerIsOpenAfterOpenMessage" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateControllerOnlyIncrementsStatsByOneOnFailureToOpenWhileClosed" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateIsClosedAndInNotResponseModeAndStatsStayCorrectWhenReceiveReset" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateControllerFailsToOpenGateWhileClosedWhenGateFailsThreeTimesGateBecomesUnresponsive" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateControllerSuccedsToCloseGateWhileOpenAfterOneFailure" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateControllerCorrectlyLogsWhileOpensGateWhileClosedWhenGateFailsThreeTimes" classname="tollbooth.TollboothTest" time="0.0">
+      <failure>
+        <expected>open: malfunction</expected>
+        <actual>open: malfunction System Unresponsive</actual>org.junit.ComparisonFailure: expected:&lt;open: malfunction[]&gt; but was:&lt;open: malfunction[ System Unresponsive]&gt;
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at org.junit.Assert.assertEquals(Assert.java:144)
+	at tollbooth.TollboothTest.gateControllerCorrectlyLogsWhileOpensGateWhileClosedWhenGateFailsThreeTimes(TollboothTest.java:279)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+
+</failure>
+    </testcase>
+    <testcase name="gateIsOpenAndInNotResponseModeAndStatsStayCorrectWhenReceiveReset" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="newGateControllerIsClosed" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateControllerFailsToCloseGateWhileItsOpenAndIsInWillNotRespond" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateControllerNumberClosesDefaultCorrect" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateControllerOpensAndIncrementsStatsWhenGateIsClosed" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateControllerSuccedsToUpdateStatsGateWhileOpenAfterOneFailure" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateControllerCorrectlyThrowsErrorWhileOpensGateWhileClosedWhenGateFailsThreeTimes" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateControllerOpensOnSingleFailureForOpen" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="createNewTollGateWithNoController" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateControllerCorrectStatisticsWhenFailsToCloseGateWhileItsOpenAndIsInWillNotRespond" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateControllerOpensAndDoesNotIncrementsStatsWhenGateIsOpen" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateControllerNumberOpensDefaultCorrect" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateIsOpenAndResponsiveResetIsSentTestGateCloses" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateIsOpenAndInResponseModeResetIsSentButFailsAfterThreeTrysTestGateStaysOpen" classname="tollbooth.TollboothTest" time="0.0"/>
+    <testcase name="gateControllerDoesntModifyStatsIfInWillNotRespondMode" classname="tollbooth.TollboothTest" time="0.0"/>
+  </testsuite>
+  <testsuite name="tollbooth.TollgateLoggerTest" time="0.001">
+    <testcase name="addmultipleMessageToToolBoothLogger" classname="tollbooth.TollgateLoggerTest" time="0.0"/>
+    <testcase name="receiveNullWhenThereAreNoMessagesToGet" classname="tollbooth.TollgateLoggerTest" time="0.001"/>
+    <testcase name="defaultLoggerMessageSize" classname="tollbooth.TollgateLoggerTest" time="0.0"/>
+    <testcase name="createNewTollGateLoggerWithName" classname="tollbooth.TollgateLoggerTest" time="0.0"/>
+    <testcase name="addMessageToToolBoothLogger" classname="tollbooth.TollgateLoggerTest" time="0.0"/>
+    <testcase name="addAndRemoveMultipleMessageToToolBoothLogger" classname="tollbooth.TollgateLoggerTest" time="0.0"/>
+    <testcase name="createNewTollGateLogger" classname="tollbooth.TollgateLoggerTest" time="0.0"/>
+  </testsuite>
+</testrun>

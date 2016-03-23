@@ -200,7 +200,7 @@ public class TollboothTest
 		gate.open();
 		
 		LogMessage message = logger.getNextMessage();
-		assertEquals("open: malfunction Open: Failed", message.getMessage());
+		assertEquals("open: malfunction", message.getMessage());
 		message = logger.getNextMessage();
 		assertEquals("open: successful", message.getMessage());
 	}
@@ -276,11 +276,11 @@ public class TollboothTest
 		
 		assertFalse(controller.testIsOpen());
 		LogMessage message = logger.getNextMessage();
-		assertEquals("open: malfunction System Unresponsive", message.getMessage());
+		assertEquals("open: malfunction", message.getMessage());
 		message = logger.getNextMessage();
-		assertEquals("open: malfunction System Unresponsive", message.getMessage());
+		assertEquals("open: malfunction", message.getMessage());
 		message = logger.getNextMessage();
-		assertEquals("open: unrecoverable malfunction System Unresponsive", message.getMessage());
+		assertEquals("open: unrecoverable malfunction", message.getMessage());
 		assertNotNull(message.getCause());
 	}
 	
@@ -349,11 +349,11 @@ public class TollboothTest
 		gate.open();
 		
 		LogMessage message = logger.getNextMessage();
-		assertEquals("open: malfunction System Unresponsive", message.getMessage());
+		assertEquals("open: malfunction", message.getMessage());
 		message = logger.getNextMessage();
-		assertEquals("open: malfunction System Unresponsive", message.getMessage());
+		assertEquals("open: malfunction", message.getMessage());
 		message = logger.getNextMessage();
-		assertEquals("open: unrecoverable malfunction System Unresponsive", message.getMessage());
+		assertEquals("open: unrecoverable malfunction", message.getMessage());
 		message = logger.getNextMessage();
 		assertEquals("open: will not respond", message.getMessage());
 	}
@@ -417,7 +417,7 @@ public class TollboothTest
 		}
 		
 		LogMessage message = logger.getNextMessage();
-		assertEquals("close: malfunction Close: Failed", message.getMessage());
+		assertEquals("close: malfunction", message.getMessage());
 		assertNotNull(message.getCause());
 		message = logger.getNextMessage();
 		assertEquals("close: successful", message.getMessage());
@@ -564,11 +564,11 @@ public class TollboothTest
 		}
 		
 		LogMessage message = logger.getNextMessage();
-		assertEquals("close: malfunction System Unresponsive", message.getMessage());
+		assertEquals("close: malfunction", message.getMessage());
 		message = logger.getNextMessage();
-		assertEquals("close: malfunction System Unresponsive", message.getMessage());
+		assertEquals("close: malfunction", message.getMessage());
 		message = logger.getNextMessage();
-		assertEquals("close: unrecoverable malfunction System Unresponsive", message.getMessage());
+		assertEquals("close: unrecoverable malfunction", message.getMessage());
 		message = logger.getNextMessage();
 		assertEquals("close: will not respond", message.getMessage());
 		
@@ -900,11 +900,11 @@ public class TollboothTest
 		}
 		
 		LogMessage message = logger.getNextMessage();
-		assertEquals("reset: malfunction System Unresponsive", message.getMessage());
+		assertEquals("reset: malfunction", message.getMessage());
 		message = logger.getNextMessage();
-		assertEquals("reset: malfunction System Unresponsive", message.getMessage());
+		assertEquals("reset: malfunction", message.getMessage());
 		message = logger.getNextMessage();
-		assertEquals("reset: unrecoverable malfunction System Unresponsive", message.getMessage());
+		assertEquals("reset: unrecoverable malfunction", message.getMessage());
 	}
 	
 	

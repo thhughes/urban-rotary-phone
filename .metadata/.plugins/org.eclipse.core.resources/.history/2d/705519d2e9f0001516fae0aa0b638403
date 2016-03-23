@@ -77,13 +77,12 @@ public class TollGate
 			}catch (TollboothException e){
 				if (numTry == 2){
 					// On the Third Try 
-					String errorMessage = e.getMessage();
 					
-					logger.accept(new LogMessage("open: unrecoverable malfunction "+errorMessage, e));
+					logger.accept(new LogMessage("open: unrecoverable malfunction", e));
 					willNotRespondMode = true;
-					throw new TollboothException("open: unrecoverable malfunction "+errorMessage, e);
+					throw new TollboothException("open: unrecoverable malfunction",e);
 				}else{
-					logger.accept(new LogMessage("open: malfunction "+e.getMessage(), e ));
+					logger.accept(new LogMessage("open: malfunction", e ));
 				}
 				
 			}
@@ -123,14 +122,13 @@ public class TollGate
 				
 			}catch (TollboothException e){
 				if (numTry == 2){
-					String errorMessage = e.getMessage();
 					// On the Third try
-					logger.accept(new LogMessage("close: unrecoverable malfunction "+errorMessage, e));
+					logger.accept(new LogMessage("close: unrecoverable malfunction", e));
 					willNotRespondMode = true;
-					throw new TollboothException("close: unrecoverable malfunction "+errorMessage, e);
+					throw new TollboothException("close: unrecoverable malfunction", e);
 					
 				}else{
-					logger.accept(new LogMessage("close: malfunction "+e.getMessage(), e));
+					logger.accept(new LogMessage("close: malfunction", e));
 					
 				}
 				
@@ -154,23 +152,20 @@ public class TollGate
 				}
 				
 				if (controller.isOpen()){
-					controller.reset();
+					controller.close();
 				}
-				controller.reset();
 				logger.accept(new LogMessage("reset: successful"));
 				break;
 				
 			}catch(TollboothException e){
 				if (numTry == 2){
 					// On the Third try
-					String errorMessage = e.getMessage();
-					
-					logger.accept(new LogMessage("reset: unrecoverable malfunction "+errorMessage, e));
+					logger.accept(new LogMessage("reset: unrecoverable malfunction", e));
 					willNotRespondMode = true;
-					throw new TollboothException("reset: unrecoverable malfunction "+errorMessage, e);
+					throw new TollboothException("reset: unrecoverable malfunction", e);
 					
 				}else{
-					logger.accept(new LogMessage("reset: malfunction "+e.getMessage(), e));
+					logger.accept(new LogMessage("reset: malfunction", e));
 					
 				}
 				

@@ -280,7 +280,7 @@ public class TollboothTest
 		message = logger.getNextMessage();
 		assertEquals("open: malfunction System Unresponsive", message.getMessage());
 		message = logger.getNextMessage();
-		assertEquals("open: unrecoverable malfunction System Unresponsive", message.getMessage());
+		assertEquals("open: unrecoverable malfunction", message.getMessage());
 		assertNotNull(message.getCause());
 	}
 	

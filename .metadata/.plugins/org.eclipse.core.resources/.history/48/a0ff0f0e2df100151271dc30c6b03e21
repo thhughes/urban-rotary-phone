@@ -169,7 +169,7 @@ public class TollGate
 					
 					logger.accept(new LogMessage("reset: malfunction "+errorMessage, e));
 					willNotRespondMode = true;
-					logger.accept(new LogMessage("reset: unrecoverable malfunction "+errorMessage, e));
+					logger.accept(new LogMessage("close: unrecoverable malfunction "+errorMessage, e));
 					throw new TollboothException("reset: unrecoverable malfunction "+errorMessage, e);
 					
 				}else{

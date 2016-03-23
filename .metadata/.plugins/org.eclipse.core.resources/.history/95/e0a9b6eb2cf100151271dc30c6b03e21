@@ -79,9 +79,8 @@ public class TollGate
 					// On the Third Try 
 					String errorMessage = e.getMessage();
 					
-					logger.accept(new LogMessage("open: malfunction "+errorMessage, e));
-					willNotRespondMode = true;
 					logger.accept(new LogMessage("open: unrecoverable malfunction "+errorMessage, e));
+					willNotRespondMode = true;
 					throw new TollboothException("open: unrecoverable malfunction "+errorMessage, e);
 				}else{
 					logger.accept(new LogMessage("open: malfunction "+e.getMessage(), e ));
@@ -126,9 +125,8 @@ public class TollGate
 				if (numTry == 2){
 					String errorMessage = e.getMessage();
 					// On the Third try
-					logger.accept(new LogMessage("close: malfunction "+errorMessage, e));
-					willNotRespondMode = true;
 					logger.accept(new LogMessage("close: unrecoverable malfunction "+errorMessage, e));
+					willNotRespondMode = true;
 					throw new TollboothException("close: unrecoverable malfunction "+errorMessage, e);
 					
 				}else{
@@ -167,9 +165,8 @@ public class TollGate
 					// On the Third try
 					String errorMessage = e.getMessage();
 					
-					logger.accept(new LogMessage("reset: malfunction "+errorMessage, e));
-					willNotRespondMode = true;
 					logger.accept(new LogMessage("reset: unrecoverable malfunction "+errorMessage, e));
+					willNotRespondMode = true;
 					throw new TollboothException("reset: unrecoverable malfunction "+errorMessage, e);
 					
 				}else{

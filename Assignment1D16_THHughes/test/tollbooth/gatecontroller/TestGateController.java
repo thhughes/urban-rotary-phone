@@ -68,7 +68,7 @@ public class TestGateController implements GateController
 		if(numFails > 0){
 			numFails--;
 			failCount++;
-			if (failCount == 2){
+			if (failCount == 3){
 				throw new TollboothException("close: unrecoverable malfunction");
 			}
 			throw new TollboothException("Close: Failed");
@@ -103,6 +103,15 @@ public class TestGateController implements GateController
 	 */
 	@Override
 	public boolean isOpen() throws TollboothException
+	{
+		if (isResponsive){
+			return isOpen;
+		}else{
+			throw new TollboothException("System Unresponsive");
+		}
+	}
+	
+	public boolean testIsOpen()
 	{
 		return isOpen;
 	}

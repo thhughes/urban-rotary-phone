@@ -24,7 +24,7 @@ public class TollGate
 	private final SimpleLogger logger;
 	private Integer numOpens;
 	private Integer numCloses;
-	private int numberRetry; 
+	private final int numberRetry; 
 	private boolean willNotRespondMode;
 	
 	/**
@@ -51,19 +51,23 @@ public class TollGate
 	{
 		
 		int numTry = 0;
-		// If it's open
-		if (controller.isOpen()){
-			return;
-		}
-		// If it's not responding
-		if (willNotRespondMode){
-			logger.accept(new LogMessage("open: will not respond"));
-			return; 
-		}
-		// Normal Runtime
+		
 		for (;(numTry < numberRetry);numTry++){
 			try{
-				controller.open();
+
+				if(willNotRespondMode){
+					// If the system is in do not respond mode
+					logger.accept(new LogMessage("open: will not respond"));
+					break;
+				}
+				
+				if(controller.isOpen()){
+					// If the System is open already
+					break;
+				}
+				
+				// If the system is (or was) responding and is not open.
+				controller.open();// Throws TollboothException
 				numOpens++;
 				if (numTry > 0){
 					logger.accept(new LogMessage("open: successful"));
@@ -71,12 +75,14 @@ public class TollGate
 				break;
 				
 			}catch (TollboothException e){
-				if (numTry==2){
-					logger.accept(new LogMessage("open: unrecoverable malfunction",e));
+				if (numTry == 2){
+					// On the Third Try 
+					
+					logger.accept(new LogMessage("open: unrecoverable malfunction", e));
 					willNotRespondMode = true;
-					throw new TollboothException("open: unrecoverable malfunction");
+					throw new TollboothException("open: unrecoverable malfunction",e);
 				}else{
-					logger.accept(new LogMessage("open: malfunction",e));
+					logger.accept(new LogMessage("open: malfunction", e ));
 				}
 				
 			}
@@ -91,18 +97,22 @@ public class TollGate
 	public void close() throws TollboothException
 	{
 		int numTry = 0;
-		// If it's closed
-		if (!controller.isOpen()){
-			return;
-		}
-		// If it's not responding
-		if (willNotRespondMode){
-			logger.accept(new LogMessage("close: will not respond"));
-			return; 
-		}
-		// Normal Runtime
+		
 		for (;(numTry < numberRetry);numTry++){
 			try{
+				
+				if (willNotRespondMode){
+					// If it's in will not Respond mode
+					logger.accept(new LogMessage("close: will not respond"));
+					break;
+				}
+				
+				if (!controller.isOpen()){
+					// If it's already closed
+					break;
+				}
+				
+				// If it's open and is (or was) responding
 				controller.close();
 				numCloses++;
 				if (numTry > 0){
@@ -111,12 +121,15 @@ public class TollGate
 				break;
 				
 			}catch (TollboothException e){
-				if (numTry==2){
-					logger.accept(new LogMessage("close: unrecoverable malfunction",e));
+				if (numTry == 2){
+					// On the Third try
+					logger.accept(new LogMessage("close: unrecoverable malfunction", e));
 					willNotRespondMode = true;
-					throw new TollboothException("close: unrecoverable malfunction");
+					throw new TollboothException("close: unrecoverable malfunction", e);
+					
 				}else{
-					logger.accept(new LogMessage("close: malfunction",e));
+					logger.accept(new LogMessage("close: malfunction", e));
+					
 				}
 				
 			}
@@ -130,8 +143,34 @@ public class TollGate
 	 */
 	public void reset() throws TollboothException
 	{
-		if (controller.isOpen()){
-			controller.close();
+		int numTry = 0;
+		for(;(numTry < numberRetry); numTry++){
+			try{
+				if(willNotRespondMode){
+					logger.accept(new LogMessage("reset: will not respond"));
+					break;
+				}
+				
+				if (controller.isOpen()){
+					controller.close();
+				}
+				logger.accept(new LogMessage("reset: successful"));
+				break;
+				
+			}catch(TollboothException e){
+				if (numTry == 2){
+					// On the Third try
+					logger.accept(new LogMessage("reset: unrecoverable malfunction", e));
+					willNotRespondMode = true;
+					throw new TollboothException("reset: unrecoverable malfunction", e);
+					
+				}else{
+					logger.accept(new LogMessage("reset: malfunction", e));
+					
+				}
+				
+			}
+			
 		}
 	}
 	

@@ -14,11 +14,13 @@ package tollbooth;
 
 
 import java.util.LinkedList;
-//import java.util.NoSuchElementException;
 import java.util.Queue;
-//import java.util.logging.FileHandler;
-//import java.util.logging.Level;
-//import java.util.logging.Logger;
+/* ** Imports for logging to a file: 
+	import java.util.NoSuchElementException;
+	import java.util.logging.FileHandler;
+	import java.util.logging.Level;
+	import java.util.logging.Logger;
+*/
 /**
  * The TollgateLogger is a SimpleLogger implementation using a linkedList queue for 
  * log management
@@ -30,13 +32,14 @@ public class TollgateLogger implements SimpleLogger{
 	private static final String loggerName = "TollgateLogger";
 	private static Logger logger;
 	private static FileHandler TollgateFileHandler;
+	LoggerName: Format as: "/path/from/project/base/fileName". Function will add ".log"
 	*/
 	
 	private Queue<LogMessage> messageQueue;
 	
 	/**
 	 * Constructor for TollgateLogger
-	 * @param name of the logger, use to help with log placement. Format as: "/path/from/project/base/fileName". Function will add ".log"
+	 * @param name of the logger
 	 */
 	public TollgateLogger (String name){
 		/* Information for using the logger class - not needed for this implementation
@@ -50,16 +53,17 @@ public class TollgateLogger implements SimpleLogger{
 
 	@Override
 	public void accept(LogMessage message) {
-		//logger.log(Level.SEVERE, message.getMessage());
 		messageQueue.add(message);
 	}
 
 	@Override
 	public LogMessage getNextMessage(){
-		if(messageQueue.size() < 1){
-			return null;
+		LogMessage responseLog = null;
+		
+		if(messageQueue.size() >= 1){
+			responseLog = messageQueue.remove();
 		}
-		return messageQueue.remove();
+		return responseLog;
 	}
 	
 	/**
